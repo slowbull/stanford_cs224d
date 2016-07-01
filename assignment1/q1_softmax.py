@@ -22,13 +22,14 @@ def softmax(x):
 
     ### YOUR CODE HERE
     #raise NotImplementedError
+    # treat vector as array
     if len(x.shape)==1:
         x = np.array([x])
-    row_max = np.amax(x,axis=1)
-    x = x - row_max.reshape(x.shape[0],1)
+    row_max = np.amax(x,axis=1) # find max
+    x = x - row_max.reshape(x.shape[0],1) # broadcasting
     x = np.exp(x)
     row_sum = np.sum(x,axis=1)
-    x = x / row_sum.reshape(x.shape[0],1)
+    x = x / row_sum.reshape(x.shape[0],1) # broadcasting
     ### END YOUR CODE
     
     return x
